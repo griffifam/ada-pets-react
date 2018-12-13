@@ -19,6 +19,7 @@ const petElements = (props) => {
         species={pet.species}
         about={pet.about}
         location={pet.location}
+        images={pet.images}
         selectDetailsCallback={props.selectDetailsCallback}
         removePetCallback={props.removePetCallback}
         />

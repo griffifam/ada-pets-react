@@ -11,6 +11,7 @@ class NewPetForm extends Component {
     this.state = {
       name: '',
       species: '',
+      images: '',
     };
   }
 
@@ -22,9 +23,16 @@ class NewPetForm extends Component {
   }
 
   onSpeciesChange = (event) => {
-    console.log(`Name Field updated ${event.target.value}`);
+    console.log(`Species Field updated ${event.target.value}`);
     this.setState({
       species: event.target.value,
+    });
+  }
+
+  onImageChange = (event) => {
+    console.log(`Image Field updated ${event.target.value}`);
+    this.setState({
+      images: event.target.value,
     });
   }
 
@@ -34,11 +42,13 @@ class NewPetForm extends Component {
   const newPet = {
     name: this.state.name,
     species: this.state.species,
+    images: this.state.images,
   };
 
   this.setState({
     name: '',
     species: '',
+    images: '',
   });
 
   this.props.addPetCallback(newPet)
@@ -62,6 +72,13 @@ class NewPetForm extends Component {
             onChange={this.onSpeciesChange}
             />
         </div>
+        <div>
+          <label htmlFor="images">Image:</label>
+          <input name="images"
+            value={this.images}
+            onChange={this.onImageChange}
+            />
+        </div>
         <input className="btn btn-success new-pet-form--submit" type="submit" name="submit" value="Add a Pet" onClick={this.onFormSubmit}/>
       </form>
     );
@@ -73,6 +90,7 @@ class NewPetForm extends Component {
 NewPetForm.propTypes = {
   name: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
+  images: PropTypes.string.isRequired,
   addPetCallback: PropTypes.func.isRequired,
 };
 
